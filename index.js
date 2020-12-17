@@ -4,15 +4,15 @@ const express = require('express');
 const app = express();
 const models = require('./models')
 
-mongoose.connect(`mongodb://localhost/makeApi`)
+// mongoose.connect(`mongodb://localhost/makeApi`)
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.once('open', () => {
-    console.log(`Connected to MongoDB on ${db.host}:${db.port}`)
-})
+// db.once('open', () => {
+//     console.log(`Connected to MongoDB on ${db.host}:${db.port}`)
+// })
 
-db.on('error', (err)=>{console.log('Error', ErrorEvent)})
+// db.on('error', (err)=>{console.log('Error', ErrorEvent)})
 
 app.use(express.urlencoded({ extended: false}))
 
@@ -47,7 +47,7 @@ app.get('/:id', (req, res) => {
 
 // ≈
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen( PORT, ()=> {
 console.log(`Server listening to on PORT: ${PORT}`)})
