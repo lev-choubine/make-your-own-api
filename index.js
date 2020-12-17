@@ -20,28 +20,9 @@ app.get('/',(req, res)=>{
     res.send('Bando, Moteru')
 })
 
+app.use('/bando', require('./api/api'))
 /////////////////////////////////////////////
-app.get('/:id', (req, res) => {
-    models.Bando.findOne({_id: req.params.id}).then((bando) => {
-      res.status(200).json({ bando })
-    })
-    .catch((err) => { res.send(err) })
-  })
-  
-  app.post('/', (req, res) => {
-    models.Bando.create(req.body).then((bando) => {
-      res.status(201).json({ bando })
-    })
-    .catch((err) => { res.send(err) })
-  })
-  
-  app.put('/:id', (req, res) => {
-    res.send('hello from PUT /bando/:id')
-  })
-  
-  app.delete('/:id', (req, res) => {
-    res.send('hello from DELETE /bando/:id')
-  })
+
 
 //////////////////////////////////////////////
 
