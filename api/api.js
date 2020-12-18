@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
   })
   
   router.post('/', (req, res) => {  
-    models.Bando.create(req.body).then((bounty) => {
-      res.status(201).json({ band })
+    models.Bando.create(req.body).then((bands) => {
+      res.status(201).json({ bands })
     })
     .catch((error) => {
       console.log(error);
@@ -31,15 +31,8 @@ router.get('/', (req, res) => {
   const { wantedFor, client, reward, hunters, captured, lastSeen } = req.body
   
   models.Bounty.update({
-    _id: req.params.id
-  }, {$set: {
-    wantedFor,
-    client,
-    reward,
-    hunters,
-    captured,
-    lastSeen
-  }})
+    band: req.params.id
+  })
   .then((bounty) => {
     res.status(201).json({ band })
   })
@@ -47,7 +40,7 @@ router.get('/', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  models.Bando.deleteOne({ _id: req.params.id })
+  models.Bando.deleteOne({ band: req.params.id })
   .then((bounty) => res.status(201).json({ band }))
   .catch((error) => res.send({ error }))
 })
